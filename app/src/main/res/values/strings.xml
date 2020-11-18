@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Fifa Ultimate Bravery</string>
+    <string name="userName">Username</string>
+    <string name="passWord">Password</string>
+    <string name="logIn">Log in</string>
+    <string name="register">Register</string>
+    <string name="exit" translatable="false">Exit</string>
+    <string name="menuTitle" translatable="false">FUB Menu</string>
+    <string name="generateMatch">Generate match-up</string>
+    <string name="viewStats">View statistics</string>
+    <string name="cancel">Cancel</string>
+    <string name="matchUp">Match-up</string>
+    <string name="you">You</string>
+    <string name="opponent">Opponent</string>
+    <string name="settings">Settings</string>
+    <string name="reGenerate">Re-generate</string>
+    <string name="enterResults">Enter match results</string>
+    <string name="rageQuit">Rage quit</string>
+    <string name="goalsHint">Goals</string>
+    <string name="submit">Submit</string>
+    <string name="statsTitle">Statistics</string>
+    <string name="gamesPlayed">Games played:</string>
+    <string name="wins">Wins:</string>
+    <string name="winPercentage">Win percentage:</string>
+    <string name="versus" translatable="false">vs.</string>
+    <string name="myClubDummy" translatable="false">My club</string>
+    <string name="myLeagueDummy" translatable="false">My league</string>
+    <string name="opponentClubDummy" translatable="false">Opponents club</string>
+    <string name="opponentLeagueDummy" translatable="false">Opponents league</string>
+    <string name="gamesPlayedDummy" translatable="false">games</string>
+    <string name="winsDummy" translatable="false">wins</string>
+    <string name="winPercentageDummy" translatable="false">percentage</string>
+    <string name="dummyResult" translatable="false">0</string>
+
+    <!--Wagers-->
+    <string name="money">Loser gives 10 bucks to winner</string>
+    <string name="wedgie">Loser gets a wedgie - winner gives</string>
+    <string name="shot">Loser takes a shot of vodka</string>
+    <string name="bitchSlap">Loser gets a flat hand slap - winner swings</string>
+    <string name="sniff">Loser sniffs winners socks</string>
+    <string name="lick">Loser licks winners back</string>
+    <string name="pushUps">Loser does 20 push-ups</string>
+    <string name="condiment">Loser eats spoonful of condiment - winners choice</string>
+    <string name="beer">Loser chugs a bottle of beer</string>
+    <string name="profilePic">Loser gets new FB profile picture for 1 hour - winners choice</string>
+
+    <string name="wagerDummy" translatable="false">Wager</string>
+
+</resources>

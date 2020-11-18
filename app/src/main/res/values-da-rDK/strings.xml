@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fifa Ultimate Bravery</string>
+    <string name="userName">Brugernavn</string>
+    <string name="passWord">Kodeord</string>
+    <string name="logIn">Log ind</string>
+    <string name="register">Registrér</string>
+    <string name="generateMatch">Generer fodboldkamp</string>
+    <string name="viewStats">Se statistik</string>
+    <string name="cancel">Annuller</string>
+    <string name="matchUp">Fodboldkamp</string>
+    <string name="you">Dig</string>
+    <string name="opponent">Modstander</string>
+    <string name="settings">Indstillinger</string>
+    <string name="reGenerate">Re-generér</string>
+    <string name="enterResults">Indtast kampresultat</string>
+    <string name="rageQuit">Raseri-exit</string>
+    <string name="goalsHint">Mål</string>
+    <string name="submit">Gem resultat</string>
+    <string name="statsTitle">Statistik</string>
+    <string name="gamesPlayed">Spil spillet:</string>
+    <string name="wins">Antal sejre:</string>
+    <string name="winPercentage">Sejrsprocent:</string>
+
+    <!--Væddemål-->
+    <string name="money">Taberen giver 50 kroner til vinderen</string>
+    <string name="wedgie">Taberen få en olfert - vinderen giver</string>
+    <string name="shot">Taberen drikker et vodkashot</string>
+    <string name="bitchSlap">Taberen får et slag med flad hånd - vinderen slår</string>
+    <string name="sniff">Taberen snuser til vinderens sokker</string>
+    <string name="lick">Taberen slikker vinderen på ryggen</string>
+    <string name="pushUps">Taberen tager 20 armbøjninger</string>
+    <string name="condiment">Taberen spiser en skeful dyppelse - vinderen bestemmer</string>
+    <string name="beer">Taberen bunder en flaske øl</string>
+    <string name="profilePic">Taberen får nyt profilbillede på FB i 1 time - vinderen bestemmer</string>
+</resources>
