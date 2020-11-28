@@ -9,6 +9,8 @@
     <string name="generateMatch">Generate match-up</string>
     <string name="viewStats">View statistics</string>
     <string name="cancel">Cancel</string>
+    <string name="logout">Log out</string>
+    <string name="add">add</string>
     <string name="matchUp">Match-up</string>
     <string name="you">You</string>
     <string name="opponent">Opponent</string>
@@ -29,9 +31,18 @@
     <string name="opponentLeagueDummy" translatable="false">Opponents league</string>
     <string name="gamesPlayedDummy" translatable="false">games</string>
     <string name="winsDummy" translatable="false">wins</string>
+    <string name="myGoalsStatDummy" translatable="false">0</string>
+    <string name="opponentGoalsStatDummy" translatable="false">0</string>
     <string name="winPercentageDummy" translatable="false">percentage</string>
     <string name="dummyResult" translatable="false">0</string>
-
+    <string name="SpecificLeagues">Only selecting teams from </string>
+<string-array name="Leagues">
+    <item>PL</item>
+    <item>LaLiga</item>
+    <item>BundesLiga</item>
+    <item>Ligue 1</item>
+    <item>3F SuperLiga</item>
+</string-array>
     <!--Wagers-->
     <string name="money">Loser gives 10 bucks to winner</string>
     <string name="wedgie">Loser gets a wedgie - winner gives</string>
@@ -43,7 +54,9 @@
     <string name="condiment">Loser eats spoonful of condiment - winners choice</string>
     <string name="beer">Loser chugs a bottle of beer</string>
     <string name="profilePic">Loser gets new FB profile picture for 1 hour - winners choice</string>
+    <string name="wagerAddHint">Add wager here</string>
 
     <string name="wagerDummy" translatable="false">Wager</string>
+
 
 </resources>

@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:text="@string/generateMatch"
@@ -51,16 +51,41 @@
         app:layout_constraintTop_toBottomOf="@+id/generateBtn" />
 
     <Button
-        android:id="@+id/cancelBtn2"
+        android:id="@+id/addBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/add"
+        app:layout_constraintStart_toEndOf="@+id/EdtTxtAddWager"
+        app:layout_constraintTop_toTopOf="@+id/EdtTxtAddWager" />
+
+    <Button
+        android:id="@+id/LogOutBtn2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
-        android:text="@string/cancel"
+        android:text="@string/logout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EdtTxtAddWager" />
+
+    <EditText
+        android:id="@+id/EdtTxtAddWager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="@string/wagerAddHint"
+        android:inputType="none"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statisticsBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

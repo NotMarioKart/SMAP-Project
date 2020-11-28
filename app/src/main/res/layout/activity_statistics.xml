@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".StatisticsActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/StatsList"
+        android:layout_width="415dp"
+        android:layout_height="297dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winPercentageTV"
+        app:layout_constraintVertical_bias="0.145"
+        tools:listitem="@layout/stat_view" />
+
     <TextView
         android:id="@+id/statsTitleTV"
         android:layout_width="wrap_content"
@@ -86,9 +97,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:text="@string/winPecentageDummy"
+        android:text="@string/winPercentageDummy"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/winPercentageTV"
         app:layout_constraintTop_toTopOf="@+id/winPercentageTV" />
+
+    <Button
+        android:id="@+id/cancelBnt5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

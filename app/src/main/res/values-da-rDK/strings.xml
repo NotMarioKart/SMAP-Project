@@ -8,6 +8,8 @@
     <string name="generateMatch">Generer fodboldkamp</string>
     <string name="viewStats">Se statistik</string>
     <string name="cancel">Annuller</string>
+    <string name="logout">Log ud</string>
+    <string name="add">Tilføj</string>
     <string name="matchUp">Fodboldkamp</string>
     <string name="you">Dig</string>
     <string name="opponent">Modstander</string>
@@ -21,6 +23,7 @@
     <string name="gamesPlayed">Spil spillet:</string>
     <string name="wins">Antal sejre:</string>
     <string name="winPercentage">Sejrsprocent:</string>
+    <string name="SpecificLeagues">Vælger kun hold fra </string>
 
     <!--Væddemål-->
     <string name="money">Taberen giver 50 kroner til vinderen</string>
@@ -33,4 +36,5 @@
     <string name="condiment">Taberen spiser en skeful dyppelse - vinderen bestemmer</string>
     <string name="beer">Taberen bunder en flaske øl</string>
     <string name="profilePic">Taberen får nyt profilbillede på FB i 1 time - vinderen bestemmer</string>
+    <string name="wagerAddHint">Tilføj væddemål her</string>
 </resources>
