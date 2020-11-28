@@ -1,18 +1,16 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
+
+import com.fub.fifaultimatebravery.R;
 
 public class ResultsActivity extends AppCompatActivity {
     // Variables

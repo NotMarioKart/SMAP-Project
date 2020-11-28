@@ -1,4 +1,4 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ViewModels.LoginActivityViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

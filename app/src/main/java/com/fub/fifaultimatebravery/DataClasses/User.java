@@ -1,4 +1,4 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.DataClasses;
 
 public class User {
 

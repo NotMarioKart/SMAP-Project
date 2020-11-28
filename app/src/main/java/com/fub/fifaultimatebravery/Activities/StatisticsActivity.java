@@ -1,4 +1,4 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.fub.fifaultimatebravery.Activities.MenuActivity;
+import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ViewModels.StatisticsActivityViewModel;
 
 public class StatisticsActivity extends AppCompatActivity {
     // Variables

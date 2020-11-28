@@ -1,4 +1,4 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ViewModels.MenuActivityViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity {
