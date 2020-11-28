@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "369695261521",
+    "firebase_url": "https://fifaultimatebravery-a0344.firebaseio.com",
+    "project_id": "fifaultimatebravery-a0344",
+    "storage_bucket": "fifaultimatebravery-a0344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369695261521:android:49ab84191be7221a638970",
+        "android_client_info": {
+          "package_name": "com.fub.fifaultimatebravery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369695261521-a1nid0ls5vvd3b3kh2921lh1es82b6od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHNGQqxzarTpz2f3Y5ldxZAH14_3Fjyak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369695261521-a1nid0ls5vvd3b3kh2921lh1es82b6od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
