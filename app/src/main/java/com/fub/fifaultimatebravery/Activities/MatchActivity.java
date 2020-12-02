@@ -29,9 +29,6 @@ public class MatchActivity extends AppCompatActivity {
     ArrayList<Integer> OpponentLeagues = new ArrayList<>();
     ArrayList<Integer> MyLeagues = new ArrayList<>();
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +42,6 @@ public class MatchActivity extends AppCompatActivity {
         txtMyClub = findViewById(R.id.myClubTV4);
         txtOpponentClub = findViewById(R.id.opponentClubTV4);
         txtMyLeague = findViewById(R.id.myLeagueTV4);
-        txtOpponentClub = findViewById(R.id.opponentClubTV4);
         txtOpponentLeague = findViewById(R.id.opponentLeagueTV4);
         txtWager = findViewById(R.id.wagerTV3);
         txtLeagues = findViewById(R.id.LeaguesTv);
@@ -100,6 +96,8 @@ public class MatchActivity extends AppCompatActivity {
                 OpponentSettingsClicked();
             }
         });
+
+        viewModel
     }
 
     private void OpponentSettingsClicked() {

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ScrapingClasses.ScrapingFunctions;
 import com.fub.fifaultimatebravery.ViewModels.LoginActivityViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         // Resources
         mAuth = FirebaseAuth.getInstance();
 
@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         bntExit = findViewById(R.id.exitBtn);
         EdtTxtUserName = findViewById(R.id.userNameET);
         EdtTxtPassword = findViewById(R.id.passwordET);
-
 
 
         bntLogIn.setOnClickListener(new View.OnClickListener() {
@@ -74,19 +73,21 @@ public class LoginActivity extends AppCompatActivity {
         if(email == null||email.length()<1||PW == null || PW.length()<1){
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
         }
-        mAuth.createUserWithEmailAndPassword(email, PW)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Log.d("TAG", "Created User");
-                            Toast.makeText(LoginActivity.this, "Created User", Toast.LENGTH_SHORT).show();
-                        }else{
-                            Log.d("TAG", "Could not create user");
-                            Toast.makeText(LoginActivity.this, "User could not be created", Toast.LENGTH_SHORT).show();
+        else {
+            mAuth.createUserWithEmailAndPassword(email, PW)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("TAG", "Created User");
+                                Toast.makeText(LoginActivity.this, "Created User", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.d("TAG", "Could not create user");
+                                Toast.makeText(LoginActivity.this, "User could not be created", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     private void trySigningIn(){
@@ -96,19 +97,21 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
             return;
         }
-        mAuth.signInWithEmailAndPassword(email, PW)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            Log.d("Tag", "Login Success");
-                            goToSecurePart();
-                        } else {
-                            Log.d("Tag", "Login failed");
-                            Toast.makeText(LoginActivity.this, "Failed to log in", Toast.LENGTH_SHORT).show();
+        else {
+            mAuth.signInWithEmailAndPassword(email, PW)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Log.d("Tag", "Login Success");
+                                goToSecurePart();
+                            } else {
+                                Log.d("Tag", "Login failed");
+                                Toast.makeText(LoginActivity.this, "Failed to log in", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     private void goToSecurePart() {

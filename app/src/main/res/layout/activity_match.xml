@@ -10,11 +10,7 @@
         android:id="@+id/resultsTitleTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
         android:text="@string/matchUp"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -27,33 +23,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
         android:text="@string/you"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/resultsTitleTV"
+        app:layout_constraintEnd_toEndOf="@+id/myLogo4"
+        app:layout_constraintStart_toStartOf="@+id/myLogo4"
         app:layout_constraintTop_toBottomOf="@+id/resultsTitleTV" />
 
     <TextView
         android:id="@+id/opponentTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:text="@string/opponent"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/resultsTitleTV"
+        app:layout_constraintEnd_toEndOf="@+id/opponentLogo4"
+        app:layout_constraintStart_toStartOf="@+id/opponentLogo4"
         app:layout_constraintTop_toBottomOf="@+id/resultsTitleTV" />
 
     <ImageView
         android:id="@+id/myLogo4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/myClubDummy"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,8 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="60dp"
         android:contentDescription="@string/opponentClubDummy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opponentTV4"
@@ -76,24 +68,22 @@
         android:id="@+id/myClubTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/myClubDummy"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myLogo4"
+        app:layout_constraintStart_toStartOf="@+id/myLogo4"
         app:layout_constraintTop_toBottomOf="@+id/myLogo4" />
 
     <TextView
         android:id="@+id/myLeagueTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/myLeagueDummy"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myClubTV4"
+        app:layout_constraintStart_toStartOf="@+id/myClubTV4"
         app:layout_constraintTop_toBottomOf="@+id/myClubTV4" />
 
     <TextView
@@ -101,11 +91,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text="@string/opponentClubDummy"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/opponentLogo4"
+        app:layout_constraintStart_toStartOf="@+id/opponentLogo4"
         app:layout_constraintTop_toBottomOf="@+id/opponentLogo4" />
 
     <TextView
@@ -113,22 +102,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text="@string/opponentLeagueDummy"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/opponentClubTV4"
+        app:layout_constraintStart_toStartOf="@+id/opponentClubTV4"
         app:layout_constraintTop_toBottomOf="@+id/opponentClubTV4" />
 
     <Button
         android:id="@+id/mySettingsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:text="@string/settings"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/myLeagueTV4"
+        app:layout_constraintStart_toStartOf="@+id/myLeagueTV4"
         app:layout_constraintTop_toBottomOf="@+id/myLeagueTV4" />
 
     <Button
@@ -136,21 +123,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text="@string/settings"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/opponentLeagueTV4"
+        app:layout_constraintStart_toStartOf="@+id/opponentLeagueTV4"
         app:layout_constraintTop_toBottomOf="@+id/opponentLeagueTV4" />
 
     <Button
         android:id="@+id/myRegenerateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="35dp"
         android:text="@string/reGenerate"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/mySettingsBtn"
+        app:layout_constraintStart_toStartOf="@+id/mySettingsBtn"
         app:layout_constraintTop_toBottomOf="@+id/mySettingsBtn" />
 
     <Button
@@ -158,21 +143,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text="@string/reGenerate"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/opponentSettingsBtn"
+        app:layout_constraintStart_toStartOf="@+id/opponentSettingsBtn"
         app:layout_constraintTop_toBottomOf="@+id/opponentSettingsBtn" />
 
     <TextView
         android:id="@+id/wagerTV3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_marginTop="40dp"
         android:maxWidth="300dp"
         android:text="@string/wagerDummy"
         android:textSize="20sp"
@@ -184,28 +164,20 @@
         android:id="@+id/enterResultsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_marginTop="32dp"
         android:text="@string/enterResults"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/wagerTV3"
+        app:layout_constraintStart_toStartOf="@+id/wagerTV3"
         app:layout_constraintTop_toBottomOf="@+id/wagerTV3" />
 
     <Button
         android:id="@+id/cancelBtn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
         android:text="@string/cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/enterResultsBtn"
+        app:layout_constraintStart_toStartOf="@+id/enterResultsBtn"
         app:layout_constraintTop_toBottomOf="@+id/enterResultsBtn" />
 
     <TextView
@@ -225,4 +197,5 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@id/opponentSettingsBtn"
         app:layout_constraintTop_toBottomOf="@+id/opponentSettingsBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
