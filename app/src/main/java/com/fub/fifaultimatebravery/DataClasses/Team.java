@@ -1,11 +1,12 @@
 package com.fub.fifaultimatebravery.DataClasses;
 
 public class Team {
-    public String name;
-    public String league;
-    public String rating;
-    public int playerReviewsCount;
-    public String instagram;
-    public String stadiumName;
-    public String logoUrl;
+    public String Id;
+    public String Name;
+    public String League;
+    public long Rating;
+    public int Reviews;
+    public String Instagram;
+    public String StadiumName;
+    public String LogoUrl;
 }
