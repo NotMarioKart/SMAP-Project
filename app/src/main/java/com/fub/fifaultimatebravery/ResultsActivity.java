@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class ResultsActivity extends AppCompatActivity {
     // Variables
     private ResultsActivity viewModel;
@@ -22,12 +26,16 @@ public class ResultsActivity extends AppCompatActivity {
     Button bntSubmit, bntCancel;
     CheckBox CBMyRQ, CBOpponentRQ;
 
+    private FirebaseFirestore db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        db = FirebaseFirestore.getInstance();
+        CollectionReference dbUser = db.collection("User");
         // Resources
         EdtTxtMyGoals = findViewById(R.id.myGoalsET);
         EdtTxtOpponentGoals = findViewById(R.id.opponentGoalsET);
@@ -83,6 +91,7 @@ public class ResultsActivity extends AppCompatActivity {
 
 
     private void SubmitClicked() {
+
 
     }
 
