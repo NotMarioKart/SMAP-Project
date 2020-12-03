@@ -7,6 +7,7 @@ public class Team {
     public long Rating;
     public int Reviews;
     public String Instagram;
+    public String Facebook;
     public String StadiumName;
     public String LogoUrl;
 }

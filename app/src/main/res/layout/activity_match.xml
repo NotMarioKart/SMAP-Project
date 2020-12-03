@@ -7,41 +7,29 @@
     tools:context=".Activities.MatchActivity">
 
     <TextView
-        android:id="@+id/resultsTitleTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/matchUp"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/youTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/you"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultsTitleTV" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/opponentTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/opponent"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/resultsTitleTV" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/myLogo4"
@@ -73,9 +61,12 @@
         android:id="@+id/myClubTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minLines="2"
         android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
         android:text="@string/myClubDummy"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myLogo4" />
@@ -84,20 +75,40 @@
         android:id="@+id/myLeagueTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
         android:text="@string/myLeagueDummy"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myCountry" />
 
     <TextView
+        android:id="@+id/activity_match_myTeamStadium_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minLines="2"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:text="@string/myLeagueDummy"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myLeagueTV4" />
+
+    <TextView
         android:id="@+id/myCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:maxHeight="20dp"
         android:text="-"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myClubTV4" />
@@ -106,9 +117,12 @@
         android:id="@+id/opponentClubTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minLines="2"
         android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
         android:text="@string/opponentClubDummy"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/opponentLogo4" />
@@ -118,8 +132,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:maxWidth="180dp"
         android:text="-"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -129,13 +145,29 @@
         android:id="@+id/opponentLeagueTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
         android:text="@string/opponentLeagueDummy"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/opponentCountryTV4" />
+
+    <TextView
+        android:id="@+id/activity_match_opponentStadium_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minLines="2"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:text="@string/opponentLeagueDummy"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentLeagueTV4" />
 
     <Button
         android:id="@+id/mySettingsBtn"
@@ -143,9 +175,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/settings"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myLeagueTV4" />
+        app:layout_constraintEnd_toEndOf="@+id/myRegenerateBtn"
+        app:layout_constraintStart_toStartOf="@+id/myRegenerateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_myTeamFacebook_Img" />
 
     <Button
         android:id="@+id/opponentSettingsBtn"
@@ -153,15 +185,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/opponentLeagueTV4" />
+        app:layout_constraintEnd_toEndOf="@+id/opponentRegenerateBtn"
+        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintStart_toStartOf="@+id/opponentRegenerateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_opponentInstagram_Img" />
 
     <Button
         android:id="@+id/myRegenerateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="16dp"
         android:text="@string/reGenerate"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -171,7 +204,7 @@
         android:id="@+id/opponentRegenerateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="16dp"
         android:text="@string/reGenerate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -181,10 +214,10 @@
         android:id="@+id/wagerTV3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:maxWidth="300dp"
         android:text="@string/wagerDummy"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/enterResultsBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myRegenerateBtn" />
@@ -193,11 +226,11 @@
         android:id="@+id/enterResultsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/enterResults"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/wagerTV3"
-        app:layout_constraintStart_toStartOf="@+id/wagerTV3"
-        app:layout_constraintTop_toBottomOf="@+id/wagerTV3" />
+        app:layout_constraintStart_toStartOf="@+id/wagerTV3" />
 
     <TextView
         android:id="@+id/LeaguesTv"
@@ -230,5 +263,49 @@
         android:orientation="vertical"
         android:rotationX="4"
         app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/activity_match_myTeamInstagram_Img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/activity_match_myTeamFacebook_Img"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_myTeamStadium_txt"
+        app:srcCompat="@drawable/instagram_logo" />
+
+    <ImageView
+        android:id="@+id/activity_match_opponentInstagram_Img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/activity_match_opponentFacebook_Img"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_opponentStadium_txt"
+        app:srcCompat="@drawable/instagram_logo" />
+
+    <ImageView
+        android:id="@+id/activity_match_myTeamFacebook_Img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_match_myTeamInstagram_Img"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_myTeamStadium_txt"
+        app:srcCompat="@drawable/facebook_logo" />
+
+    <ImageView
+        android:id="@+id/activity_match_opponentFacebook_Img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_match_opponentInstagram_Img"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_opponentStadium_txt"
+        app:srcCompat="@drawable/facebook_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

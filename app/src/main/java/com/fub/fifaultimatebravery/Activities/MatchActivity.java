@@ -1,36 +1,34 @@
 package com.fub.fifaultimatebravery.Activities;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.fub.fifaultimatebravery.DataClasses.Team;
+import com.fub.fifaultimatebravery.Dialogs.MatchSettingsDialog;
 import com.fub.fifaultimatebravery.R;
 import com.fub.fifaultimatebravery.ViewModels.MatchActivityViewModel;
 
 import java.util.ArrayList;
 
-public class MatchActivity extends AppCompatActivity {
+public class MatchActivity extends AppCompatActivity implements MatchSettingsDialog.IMatchSettingsDialogListener {
     // Variables
     private MatchActivityViewModel viewModel;
-    TextView txtMyClub, txtOpponentClub, txtMyLeague, txtMyCountry, txtOpponentCountry, txtOpponentLeague, txtWager, txtLeagues, txtOpponentLeagues;
+    TextView txtMyClub, txtOpponentClub, txtMyLeague, txtMyCountry, txtOpponentCountry, txtOpponentLeague, txtWager, txtLeagues, txtOpponentLeagues, txtMyTeamStadium, txtOpponentStadium;
     Button bntMatchResults, bntMyRegenerate, bntOpponentRegenerate, bntMySettings, bntOpponentSettings;
-    ImageView ImgMyLogo, ImgOpponentLogo;
-
-    String[] Leagues;
-    boolean[] MyCheckedLeagues;
-    boolean[] OpponentCheckedLeague;
-    ArrayList<Integer> OpponentLeagues = new ArrayList<>();
-    ArrayList<Integer> MyLeagues = new ArrayList<>();
+    ImageView ImgMyLogo, ImgOpponentLogo, ImgMyTeamFacebook, ImgMyTeamInstagram, ImgOpponentFacebook, ImgOpponentInstagram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +36,6 @@ public class MatchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_match);
 
         viewModel = new ViewModelProvider(this).get(MatchActivityViewModel.class);
-
-        Leagues = getResources().getStringArray(R.array.Leagues);
-        MyCheckedLeagues = new boolean[Leagues.length];
-        OpponentCheckedLeague = new boolean[Leagues.length];
 
         //Resources
         txtMyClub = findViewById(R.id.myClubTV4);
@@ -60,7 +54,12 @@ public class MatchActivity extends AppCompatActivity {
         bntOpponentSettings = findViewById(R.id.opponentSettingsBtn);
         ImgMyLogo = findViewById(R.id.myLogo4);
         ImgOpponentLogo = findViewById(R.id.opponentLogo4);
-
+        ImgMyTeamFacebook = findViewById(R.id.activity_match_myTeamFacebook_Img);
+        ImgMyTeamInstagram = findViewById(R.id.activity_match_myTeamInstagram_Img);
+        ImgOpponentFacebook = findViewById(R.id.activity_match_opponentFacebook_Img);
+        ImgOpponentInstagram = findViewById(R.id.activity_match_opponentInstagram_Img);
+        txtMyTeamStadium = findViewById(R.id.activity_match_myTeamStadium_txt);
+        txtOpponentStadium = findViewById(R.id.activity_match_opponentStadium_txt);
 
         bntMatchResults.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +105,10 @@ public class MatchActivity extends AppCompatActivity {
             updateOpponenentsTeam(team);
         });
 
-        viewModel.generateTwoNewTeam();
+        ImgMyTeamFacebook.setOnClickListener(view -> openFacebook(viewModel.getMyTeam().getValue()));
+        ImgMyTeamInstagram.setOnClickListener(view -> openInstagram(viewModel.getMyTeam().getValue()));
+        ImgOpponentFacebook.setOnClickListener(view -> openFacebook(viewModel.getOpponenetsTeam().getValue()));
+        ImgOpponentInstagram.setOnClickListener(view -> openInstagram(viewModel.getOpponenetsTeam().getValue()));
 
         Glide.with(this)
                 .asGif()
@@ -117,6 +119,66 @@ public class MatchActivity extends AppCompatActivity {
                 .asGif()
                 .load("https://i.pinimg.com/originals/18/79/17/187917b0606c80a6c295da1f19ff3e40.gif")
                 .into(ImgOpponentLogo);
+    }
+
+    private void openFacebook(Team team) {
+        if(team.Facebook.equals("")){
+            Toast.makeText(this, getString(R.string.FacebookErrorMessage) + team.Name, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+            String facebookUrl = getFacebookAppPageURL(this,team.Facebook);
+            facebookIntent.setData(Uri.parse(facebookUrl));
+            startActivity(facebookIntent);
+        }
+    }
+    //https://stackoverflow.com/questions/34564211/open-facebook-page-in-facebook-app-if-installed-on-android
+    public String getFacebookAppPageURL(Context context, String facebookUrl) {
+        String[] pageUrl = facebookUrl.split("/");
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+            if (versionCode >= 3002850) { //newer versions of fb app
+                return "fb://facewebmodal/f?href=" + "https://" + facebookUrl;
+            } else { //older versions of fb app
+                return "fb://page/" + pageUrl[1];
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            return facebookUrl; //normal web url
+        }
+    }
+
+    private void openInstagram(Team team) {
+        if(team.Instagram.equals("")){
+            Toast.makeText(this, getString(R.string.InstagramErrorMessage) + team.Name, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Uri uri = Uri.parse("http://" + team.Instagram);
+            Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+            likeIng.setPackage("com.instagram.android");
+
+            try {
+                startActivity(likeIng);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://" + team.Instagram)));
+            }
+        }
+    }
+
+    public String getInstagramAppPageURL(Context context, String facebookUrl) {
+        String[] pageUrl = facebookUrl.split("/");
+        PackageManager packageManager = context.getPackageManager();
+        try {
+            int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+            if (versionCode >= 3002850) { //newer versions of fb app
+                return "fb://facewebmodal/f?href=" + "https://" + facebookUrl;
+            } else { //older versions of fb app
+                return "fb://page/" + pageUrl[1];
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            return facebookUrl; //normal web url
+        }
     }
 
     private void updateOpponenentsTeam(Team team) {
@@ -135,6 +197,7 @@ public class MatchActivity extends AppCompatActivity {
             }
         }
         txtOpponentLeague.setText(leagueName);
+        txtOpponentStadium.setText(team.StadiumName);
         Glide.with(this)
                 .load(team.LogoUrl)
                 .override(200, 200)
@@ -157,6 +220,7 @@ public class MatchActivity extends AppCompatActivity {
             }
         }
         txtMyLeague.setText(leagueName);
+        txtMyTeamStadium.setText(team.StadiumName);
         Glide.with(this)
                 .load(team.LogoUrl)
                 .override(200, 200)
@@ -164,88 +228,25 @@ public class MatchActivity extends AppCompatActivity {
     }
 
     private void OpponentSettingsClicked() {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View mView = getLayoutInflater().inflate(R.layout.settings_dialog, null);
-        mBuilder.setTitle("Set your prefered league");
-        mBuilder.setMultiChoiceItems(Leagues, OpponentCheckedLeague, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i, boolean isChecked) {
-                if(isChecked){
-                    if(! OpponentLeagues.contains(i)){
-                        OpponentLeagues.add(i);
-                    } else{
-                        OpponentLeagues.remove(i);
-                    }
-                }
-            }
-        });
-        mBuilder.setCancelable(false);
-        mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                txtOpponentLeagues.setText(null);
-                String League = "";
-                for (int i = 0; i < OpponentLeagues.size(); i++){
-                    League = League + Leagues[OpponentLeagues.get(i)];
-                    if (i != OpponentLeagues.size() -1){
-                        League = League + ", ";
-                    }
-                }
-                txtOpponentLeagues.setText(getResources().getString(R.string.SpecificLeagues) + League);
-            }
-        });
-        mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        mBuilder.setView(mView);
-        AlertDialog dialog = mBuilder.create();
-        dialog.show();
+        MatchSettingsDialog matchSettingsDialog = new MatchSettingsDialog(viewModel.getAllLeagues(),viewModel.getOpponentLeagues(),false);
+        matchSettingsDialog.show(getSupportFragmentManager(), "enterGamertagDialog");
+
     }
 
     private void MySettingsClicked() {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View mView = getLayoutInflater().inflate(R.layout.settings_dialog, null);
-        mBuilder.setTitle("Set your prefered leagues");
-        mBuilder.setMultiChoiceItems(Leagues, MyCheckedLeagues, new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i, boolean isChecked) {
-                if(isChecked){
-                    if(! MyLeagues.contains(i)){
-                        MyLeagues.add(i);
-                    } else{
-                        MyLeagues.remove(i);
-                    }
-                }
-            }
-        });
-        mBuilder.setCancelable(false);
-        mBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-                txtLeagues.setText(null);
-                String League = "";
-                for (int i = 0; i < MyLeagues.size(); i++){
-                    League = League + Leagues[MyLeagues.get(i)];
-                    if (i != MyLeagues.size() -1){
-                        League = League + ", ";
-                    }
-                }
-                txtLeagues.setText(getResources().getString(R.string.SpecificLeagues) + League);
-            }
-        });
-        mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        mBuilder.setView(mView);
-        AlertDialog dialog = mBuilder.create();
-        dialog.show();
+        MatchSettingsDialog matchSettingsDialog = new MatchSettingsDialog(viewModel.getAllLeagues(),viewModel.getMyLeagues(),true);
+        matchSettingsDialog.show(getSupportFragmentManager(), "enterGamertagDialog");
 
+    }
+
+    @Override
+    public void updateSettings(ArrayList<String> selectedLeagues, boolean isMyPlayer) {
+        if(isMyPlayer){
+            viewModel.setMyLeagues(selectedLeagues);
+        }
+        else{
+            viewModel.setOpponentLeagues(selectedLeagues);
+        }
     }
 
     private void OpponentRegenerateClicked() {
@@ -276,4 +277,6 @@ public class MatchActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
+
 }

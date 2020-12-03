@@ -50,7 +50,7 @@ public class SportsDBClient {
                 teamToUpdate.LogoUrl = String.valueOf(foundTeam.getStrTeamBadge());
                 teamToUpdate.Instagram = foundTeam.getStrInstagram();
                 teamToUpdate.StadiumName = foundTeam.getStrStadium();
-
+                teamToUpdate.Facebook  = foundTeam.getStrFacebook();
                 listener.updatedTeamInfo(teamToUpdate, myTeam);
             }
         }, new Response.ErrorListener() {

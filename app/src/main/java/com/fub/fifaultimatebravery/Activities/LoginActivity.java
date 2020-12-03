@@ -1,10 +1,6 @@
 package com.fub.fifaultimatebravery.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,8 +10,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.fub.fifaultimatebravery.R;
-import com.fub.fifaultimatebravery.ScrapingClasses.ScrapingFunctions;
+import com.fub.fifaultimatebravery.Spotify.ExitService;
 import com.fub.fifaultimatebravery.ViewModels.LoginActivityViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     private LoginActivityViewModel viewModel;
     EditText EdtTxtUserName, EdtTxtPassword;
     Button bntLogIn, bntRegister, bntExit;
-
 
     private FirebaseAuth mAuth;
 
@@ -50,7 +49,10 @@ public class LoginActivity extends AppCompatActivity {
         bntExit = findViewById(R.id.exitBtn);
         EdtTxtUserName = findViewById(R.id.userNameET);
         EdtTxtPassword = findViewById(R.id.passwordET);
+        viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
+        Intent exitIntent = new Intent(this, ExitService.class);
+        startService(exitIntent);
 
         bntLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +74,13 @@ public class LoginActivity extends AppCompatActivity {
                 ExitClicked();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        viewModel.startSpotify(this);
     }
 
     private void tryCreateNewUser(){
@@ -96,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
                     });
         }
     }
-
 
     private void trySigningIn(){
         String email = EdtTxtUserName.getText().toString();

@@ -18,6 +18,7 @@
     <string name="reGenerate">Re-generate</string>
     <string name="enterResults">Enter match results</string>
     <string name="rageQuit">Rage quit</string>
+    <string name="save">Save</string>
     <string name="goalsHint">Goals</string>
     <string name="submit">Submit</string>
     <string name="statsTitle">Statistics</string>
@@ -63,6 +64,8 @@
 
     <string name="wagerDummy" translatable="false">Wager</string>
     <string name="wagerViewBnt">View wagers</string>
+    <string name="FacebookErrorMessage">\"No Facebook found for \"</string>
+    <string name="InstagramErrorMessage">\"No Instagram account found for \"</string>
 
 
 </resources>

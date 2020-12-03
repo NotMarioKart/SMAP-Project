@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.fub.fifaultimatebravery.DataClasses.Matches;
 import com.fub.fifaultimatebravery.DataClasses.Wagers;
@@ -71,7 +73,7 @@ public class MenuActivity extends AppCompatActivity {
                 WagerListClicked();
             }
         });
-        
+
         bntLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
