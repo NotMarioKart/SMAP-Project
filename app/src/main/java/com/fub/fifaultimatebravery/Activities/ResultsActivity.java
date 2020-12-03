@@ -47,7 +47,7 @@ public class ResultsActivity extends AppCompatActivity {
         txtOpponentClub = findViewById(R.id.opponentClubTV4);
         txtMyLeague = findViewById(R.id.myLeagueTV4);
         txtOpponentClub = findViewById(R.id.opponentClubTV4);
-        txtOpponentLeague = findViewById(R.id.opponentLeagueTV4);
+        txtOpponentLeague = findViewById(R.id.opponentCountryTV4);
         txtWager = findViewById(R.id.wagerTV4);
         CBMyRQ = findViewById(R.id.myRQ);
         CBOpponentRQ = findViewById(R.id.opponentRQ);

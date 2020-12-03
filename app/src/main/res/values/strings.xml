@@ -25,10 +25,10 @@
     <string name="wins">Wins:</string>
     <string name="winPercentage">Win percentage:</string>
     <string name="versus" translatable="false">vs.</string>
-    <string name="myClubDummy" translatable="false">My club</string>
-    <string name="myLeagueDummy" translatable="false">My league</string>
-    <string name="opponentClubDummy" translatable="false">Opponents club</string>
-    <string name="opponentLeagueDummy" translatable="false">Opponents league</string>
+    <string name="myClubDummy" translatable="false">-</string>
+    <string name="myLeagueDummy" translatable="false">-</string>
+    <string name="opponentClubDummy" translatable="false">-</string>
+    <string name="opponentLeagueDummy" translatable="false">-</string>
     <string name="gamesPlayedDummy" translatable="false">games</string>
     <string name="winsDummy" translatable="false">wins</string>
     <string name="myGoalsStatDummy" translatable="false">0</string>
