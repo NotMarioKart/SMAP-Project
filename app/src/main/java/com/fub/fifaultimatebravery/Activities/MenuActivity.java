@@ -1,12 +1,12 @@
 package com.fub.fifaultimatebravery.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.fub.fifaultimatebravery.R;
 import com.fub.fifaultimatebravery.ViewModels.MenuActivityViewModel;
@@ -67,7 +67,7 @@ public class MenuActivity extends AppCompatActivity {
     private void GenerateClicked() {
         Intent i = new Intent(this, MatchActivity.class);
         startActivity(i);
-        finish();
+        //finish();
     }
 
     private void StatisticsClicked() {
@@ -77,6 +77,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void AddClicked() {
+
     }
 
     private void LogOutClicked() {

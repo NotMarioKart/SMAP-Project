@@ -9,6 +9,8 @@ import androidx.lifecycle.LiveData;
 import com.fub.fifaultimatebravery.DataClasses.Team;
 import com.fub.fifaultimatebravery.Repositories.Repository;
 
+import java.util.ArrayList;
+
 public class MatchActivityViewModel extends AndroidViewModel {
 
     Repository repository;
@@ -22,19 +24,43 @@ public class MatchActivityViewModel extends AndroidViewModel {
         return opponenetsTeam;
     }
 
+    ArrayList<String> opponentLeagues = new ArrayList<>();
+    ArrayList<String> myLeagues = new ArrayList<>();
+    public ArrayList<String> getMyLeagues() {
+        return myLeagues;
+    }
+    public ArrayList<String> getOpponentLeagues(){
+        return opponentLeagues;
+    }
+    public void setMyLeagues(ArrayList<String> myLeagues) {
+        this.myLeagues = myLeagues;
+    }
+    public void setOpponentLeagues(ArrayList<String> opponentLeagues) { this.opponentLeagues = opponentLeagues;}
+
     public MatchActivityViewModel(@NonNull Application application) {
         super(application);
         repository  = Repository.getRepository(application.getApplicationContext());
         myTeam = repository.getMyTeam();
         opponenetsTeam = repository.getOpponentsTeam();
+
+        generateTwoNewTeam(); //Called here so teams are not regenerated when app is rotated
     }
 
     public void generateNewTeam(boolean setMyTeam) {
-        repository.generateNewTeam(setMyTeam);
+        if(setMyTeam){
+            repository.generateNewTeam(setMyTeam,myLeagues);
+        }
+        else{
+            repository.generateNewTeam(setMyTeam,opponentLeagues);
+        }
     }
 
     public void generateTwoNewTeam() {
-        repository.generateNewTeam(true);
-        repository.generateNewTeam(false);
+        repository.generateNewTeam(true,myLeagues);
+        repository.generateNewTeam(false,opponentLeagues);
+    }
+
+    public ArrayList<String> getAllLeagues(){
+        return repository.getAllLeagues();
     }
 }

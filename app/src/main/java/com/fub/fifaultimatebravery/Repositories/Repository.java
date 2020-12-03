@@ -8,6 +8,8 @@ import com.fub.fifaultimatebravery.DataClasses.Team;
 import com.fub.fifaultimatebravery.FirebaseClients.FirestoreClient;
 import com.fub.fifaultimatebravery.Volley.SportsDBClient;
 
+import java.util.ArrayList;
+
 public class Repository implements SportsDBClient.ISportsDbClientCallback {
     private static Repository instance;
 
@@ -16,17 +18,23 @@ public class Repository implements SportsDBClient.ISportsDbClientCallback {
 
     //Volley
     SportsDBClient sportsDBClient;
+
     @Override
     public void updatedTeamInfo(Team team, boolean updateMyTeam) {
         if(team == null){
-            firestoreClient.getRandomTeam(updateMyTeam);
+            if(updateMyTeam){
+                firestoreClient.getRandomTeam(updateMyTeam,myLeagues);
+            }
+            else {
+                firestoreClient.getRandomTeam(updateMyTeam,opponentsLeagues);
+            }
             return;
         }
         if(updateMyTeam){
-            myTeam.postValue(team);
+            myTeam.setValue(team);
         }
         else{
-            opponentsTeam.postValue(team);
+            opponentsTeam.setValue(team);
         }
     }
 
@@ -38,6 +46,8 @@ public class Repository implements SportsDBClient.ISportsDbClientCallback {
     public MutableLiveData<Team> getOpponentsTeam() {
         return opponentsTeam;
     }
+    ArrayList<String> myLeagues;
+    ArrayList<String> opponentsLeagues;
 
     //Making the repo a singleton
     public static Repository getRepository(final Context context){
@@ -69,9 +79,19 @@ public class Repository implements SportsDBClient.ISportsDbClientCallback {
         sportsDBClient.updateTeamInfo(team, updatedTeamIsMyTeam);
     }
 
-    public void generateNewTeam(boolean setMyTeam){
-        firestoreClient.getRandomTeam(setMyTeam);
+    public void generateNewTeam(boolean setMyTeam, ArrayList<String> leagues){
+        firestoreClient.getRandomTeam(setMyTeam, leagues);
+        if(setMyTeam){
+            myLeagues = leagues;
+        }
+        else {
+            opponentsLeagues = leagues;
+        }
+
     }
 
+    public ArrayList<String> getAllLeagues(){
+        return firestoreClient.getLeagues();
+    }
 
 }

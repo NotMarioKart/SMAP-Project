@@ -37,4 +37,5 @@
     <string name="beer">Taberen bunder en flaske øl</string>
     <string name="profilePic">Taberen får nyt profilbillede på FB i 1 time - vinderen bestemmer</string>
     <string name="wagerAddHint">Tilføj væddemål her</string>
+    <string name="save">Gem</string>
 </resources>
