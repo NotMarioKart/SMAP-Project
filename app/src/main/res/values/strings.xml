@@ -18,6 +18,7 @@
     <string name="reGenerate">Re-generate</string>
     <string name="enterResults">Enter match results</string>
     <string name="rageQuit">Rage quit</string>
+    <string name="save">Save</string>
     <string name="goalsHint">Goals</string>
     <string name="submit">Submit</string>
     <string name="statsTitle">Statistics</string>
@@ -36,6 +37,11 @@
     <string name="winPercentageDummy" translatable="false">percentage</string>
     <string name="dummyResult" translatable="false">0</string>
     <string name="SpecificLeagues">Only selecting teams from </string>
+    <string name="WagerSuccessToast">Wager added successfully</string>
+    <string name="WagerFailedToast">Wager failed to be added, try again</string>
+    <string name="MatchSavedSuccess">Match saved</string>
+    <string name="MatchSavedFail">Couldnt save match, try again</string>
+
 <string-array name="Leagues">
     <item>PL</item>
     <item>LaLiga</item>
@@ -57,6 +63,9 @@
     <string name="wagerAddHint">Add wager here</string>
 
     <string name="wagerDummy" translatable="false">Wager</string>
+    <string name="wagerViewBnt">View wagers</string>
+    <string name="FacebookErrorMessage">\"No Facebook found for \"</string>
+    <string name="InstagramErrorMessage">\"No Instagram account found for \"</string>
 
 
 </resources>

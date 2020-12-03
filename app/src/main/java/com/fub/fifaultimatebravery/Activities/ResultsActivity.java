@@ -1,6 +1,8 @@
 package com.fub.fifaultimatebravery.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,16 +11,28 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+
+import com.fub.fifaultimatebravery.DataClasses.Matches;
 import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ViewModels.ResultsActivityViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ResultsActivity extends AppCompatActivity {
     // Variables
-    private ResultsActivity viewModel;
     EditText EdtTxtMyGoals, EdtTxtOpponentGoals;
     TextView txtMyClub, txtOpponentClub, txtMyLeague, txtOpponentLeague, txtWager;
     Button bntSubmit, bntCancel;
     CheckBox CBMyRQ, CBOpponentRQ;
+
+    private FirebaseFirestore db;
+    private ResultsActivityViewModel viewModel;
 
 
     @Override
@@ -26,6 +40,9 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        viewModel = new ViewModelProvider(this).get(ResultsActivityViewModel.class);
+
+        db = FirebaseFirestore.getInstance();
         // Resources
         EdtTxtMyGoals = findViewById(R.id.myGoalsET);
         EdtTxtOpponentGoals = findViewById(R.id.opponentGoalsET);
@@ -62,6 +79,10 @@ public class ResultsActivity extends AppCompatActivity {
         });
 
 
+        viewModel.getMyTeam();
+        viewModel.getOpponentTeam();
+
+
 
 
         bntCancel.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +102,17 @@ public class ResultsActivity extends AppCompatActivity {
 
 
     private void SubmitClicked() {
-
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String myGoalsResult = EdtTxtMyGoals.getText().toString();
+        String opponentGoalsResult = EdtTxtOpponentGoals.getText().toString();
+        Boolean resultIsWin;
+        if (myGoalsResult.compareTo(opponentGoalsResult) > 0){
+            resultIsWin = true;
+        } else{
+            resultIsWin = false;
+        }
+        viewModel.saveMatch(userID, myGoalsResult, opponentGoalsResult, resultIsWin);
+        finish();
     }
 
     private void CancelClicked() {

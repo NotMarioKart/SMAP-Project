@@ -1,25 +1,29 @@
 package com.fub.fifaultimatebravery.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.fub.fifaultimatebravery.R;
-import com.fub.fifaultimatebravery.ScrapingClasses.ScrapingFunctions;
 import com.fub.fifaultimatebravery.Spotify.ExitService;
 import com.fub.fifaultimatebravery.ViewModels.LoginActivityViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -29,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     Button bntLogIn, bntRegister, bntExit;
 
     private FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
