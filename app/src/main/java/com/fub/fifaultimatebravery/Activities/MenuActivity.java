@@ -1,5 +1,6 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,8 +8,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.fub.fifaultimatebravery.DataClasses.Matches;
+import com.fub.fifaultimatebravery.DataClasses.Wagers;
+import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ViewModels.MenuActivityViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MenuActivity extends AppCompatActivity {
     // Variables
@@ -17,6 +28,7 @@ public class MenuActivity extends AppCompatActivity {
     Button bntGenerate, bntStatistics, bntAdd, bntLogOut;
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
 
     @Override
@@ -26,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
 
         // Resources
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         EdtTxtWager = findViewById(R.id.EdtTxtAddWager);
         bntGenerate = findViewById(R.id.generateBtn);
@@ -75,6 +88,31 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void AddClicked() {
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String customWager = EdtTxtWager.getText().toString();
+        CollectionReference dbMatches = db.collection("Wagers");
+
+
+        Wagers wagers = new Wagers(
+                customWager,
+                userID
+        );
+
+        dbMatches.add(wagers).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                EdtTxtWager.setText("");
+                Toast.makeText(MenuActivity.this, R.string.WagerSuccessToast, Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MenuActivity.this, R.string.WagerFailedToast, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
     }
 
     private void LogOutClicked() {

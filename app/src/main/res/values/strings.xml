@@ -36,6 +36,11 @@
     <string name="winPercentageDummy" translatable="false">percentage</string>
     <string name="dummyResult" translatable="false">0</string>
     <string name="SpecificLeagues">Only selecting teams from </string>
+    <string name="WagerSuccessToast">Wager added successfully</string>
+    <string name="WagerFailedToast">Wager failed to be added, try again</string>
+    <string name="MatchSavedSuccess">Match saved</string>
+    <string name="MatchSavedFail">Couldnt save match, try again</string>
+
 <string-array name="Leagues">
     <item>PL</item>
     <item>LaLiga</item>

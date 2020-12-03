@@ -24,6 +24,10 @@
     <string name="wins">Antal sejre:</string>
     <string name="winPercentage">Sejrsprocent:</string>
     <string name="SpecificLeagues">Vælger kun hold fra </string>
+    <string name="WagerSuccessToast">Væddemål blev tilføjet</string>
+    <string name="WagerFailedToast">Kunne ikke tilføje væddemål, prøv igen</string>
+    <string name="MatchSavedSuccess">Kampen blev gemt</string>
+    <string name="MatchSavedFail">Kunne ikke gemme kamp, prøv igen</string>
 
     <!--Væddemål-->
     <string name="money">Taberen giver 50 kroner til vinderen</string>

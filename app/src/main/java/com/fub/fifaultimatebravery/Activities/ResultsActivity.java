@@ -1,21 +1,25 @@
-package com.fub.fifaultimatebravery;
+package com.fub.fifaultimatebravery.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.firebase.database.FirebaseDatabase;
+
+import com.fub.fifaultimatebravery.DataClasses.Matches;
+import com.fub.fifaultimatebravery.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ResultsActivity extends AppCompatActivity {
@@ -91,7 +95,38 @@ public class ResultsActivity extends AppCompatActivity {
 
 
     private void SubmitClicked() {
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String myGoalsResult = EdtTxtMyGoals.getText().toString();
+        String opponentGoalsResult = EdtTxtOpponentGoals.getText().toString();
+        Boolean resultIsWin;
+        if (myGoalsResult.compareTo(opponentGoalsResult) > 0){
+            resultIsWin = true;
+        } else{
+            resultIsWin = false;
+        }
+        CollectionReference dbMatches = db.collection("Matches");
+        Matches matches = new Matches(
+                userID,
+                myGoalsResult,
+                opponentGoalsResult,
+                resultIsWin
+        );
 
+        dbMatches.add(matches)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Intent Save = new Intent(ResultsActivity.this, StatisticsActivity.class);
+                        Toast.makeText(ResultsActivity.this, R.string.MatchSavedSuccess, Toast.LENGTH_SHORT).show();
+                        startActivity(Save);
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ResultsActivity.this, R.string.MatchSavedFail, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
