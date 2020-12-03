@@ -15,7 +15,7 @@ public class SpotifyController {
     private SpotifyAppRemote mSpotifyAppRemote;
     public static SpotifyController instance;
 
-    private SpotifyController() {}      //Default constructor
+    private SpotifyController() {}   //Default constructor
 
     public static SpotifyController getSpotifyController() {
         if (instance == null) {
@@ -36,34 +36,50 @@ public class SpotifyController {
             Toast.makeText(context,"For full functionality, install and log in to Spotify", Toast.LENGTH_LONG).show();
         }
         else {
-            ConnectionParams connectionParams = new ConnectionParams.Builder(CLIENT_ID)
-                    .setRedirectUri(REDIRECT_URI)
-                    .showAuthView(true)
-                    .build();
-
-            SpotifyAppRemote.connect(context, connectionParams, new Connector.ConnectionListener() {
-                @Override
-                public void onConnected(SpotifyAppRemote spotifyAppRemote) {
-                    mSpotifyAppRemote = spotifyAppRemote;
-                    Log.d("SpotifyController", "Connected to Spotify");
-
-                    connected();
-                }
-
-                @Override
-                public void onFailure(Throwable throwable) {
-                    Log.d("SpotifyController", throwable.getMessage(), throwable);
-                }
-            });
+            if(mSpotifyAppRemote == null) {
+                connect(context);
+            }
+            else if(!mSpotifyAppRemote.isConnected()){
+                connect(context);
+            }
+            else {
+                playMusic();
+            }
         }
     }
 
+    private void connect(Context context) {
+        ConnectionParams connectionParams = new ConnectionParams.Builder(CLIENT_ID)
+                .setRedirectUri(REDIRECT_URI)
+                .showAuthView(true)
+                .build();
+
+        SpotifyAppRemote.connect(context, connectionParams, new Connector.ConnectionListener() {
+            @Override
+            public void onConnected(SpotifyAppRemote spotifyAppRemote) {
+                mSpotifyAppRemote = spotifyAppRemote;
+                Log.d("SpotifyController", "Connected to Spotify");
+                playMusic();
+            }
+
+            @Override
+            public void onFailure(Throwable throwable) {
+                Log.d("SpotifyController", throwable.getMessage(), throwable);
+            }
+        });
+    }
+
     public void turnOffMusic() {
+        Log.d("SpotifyController", "Pausing music");
         mSpotifyAppRemote.getPlayerApi().pause();
+    }
+
+    public void disconnectSpotify() {
+        Log.d("SpotifyController", "Disconnecting from Spotify");
         SpotifyAppRemote.disconnect(mSpotifyAppRemote);
     }
 
-    private void connected() {
+    private void playMusic() {
         mSpotifyAppRemote.getPlayerApi().play(PLAYLIST);
     }
 }

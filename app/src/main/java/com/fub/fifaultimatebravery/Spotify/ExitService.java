@@ -23,9 +23,10 @@ public class ExitService extends Service {
 
     @Override
     public void onTaskRemoved(Intent rootIntent) {
-        System.out.println("onTaskRemoved called!");
         super.onTaskRemoved(rootIntent);
+        System.out.println("onTaskRemoved called!");
         spotifyController.turnOffMusic();
+        spotifyController.disconnectSpotify();
         this.stopSelf();
     }
 }
