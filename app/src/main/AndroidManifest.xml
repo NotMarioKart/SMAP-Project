@@ -19,6 +19,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <data
+                    android:host="callback"
+                    android:scheme="spotifymusic"/>
+            </intent-filter>
         </activity>
     </application>
 
