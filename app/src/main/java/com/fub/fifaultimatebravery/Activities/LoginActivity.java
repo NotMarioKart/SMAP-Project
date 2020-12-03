@@ -1,5 +1,9 @@
 package com.fub.fifaultimatebravery.Activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,9 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.fub.fifaultimatebravery.R;
 import com.fub.fifaultimatebravery.ViewModels.LoginActivityViewModel;
@@ -27,8 +28,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         bntExit = findViewById(R.id.exitBtn);
         EdtTxtUserName = findViewById(R.id.userNameET);
         EdtTxtPassword = findViewById(R.id.passwordET);
+        viewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
+        Intent exitIntent = new Intent(this, ExitService.class);
+        startService(exitIntent);
 
         bntLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +66,13 @@ public class LoginActivity extends AppCompatActivity {
                 ExitClicked();
             }
         });
+    }
 
-        EdtTxtUserName.setText("fred@test.com");
-        EdtTxtPassword.setText("123456");
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        viewModel.startSpotify(this);
     }
 
     private void tryCreateNewUser(){
