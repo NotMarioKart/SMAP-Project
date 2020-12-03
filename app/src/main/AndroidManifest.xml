@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FifaUltimateBravery">
+        <service
+            android:enabled="true"
+            android:name="com.fub.fifaultimatebravery.Spotify.ExitService"
+            android:exported="false"
+            android:stopWithTask="false" />
         <activity android:name=".Activities.StatisticsActivity"></activity>
         <activity android:name=".Activities.ResultsActivity" />
         <activity android:name=".Activities.MatchActivity" />
@@ -16,7 +21,6 @@
         <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
