@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.fub.fifaultimatebravery.R;
 import com.fub.fifaultimatebravery.ScrapingClasses.ScrapingFunctions;
 import com.fub.fifaultimatebravery.ViewModels.LoginActivityViewModel;
@@ -19,12 +22,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class LoginActivity extends AppCompatActivity {
 
     // Variables
     private LoginActivityViewModel viewModel;
     EditText EdtTxtUserName, EdtTxtPassword;
     Button bntLogIn, bntRegister, bntExit;
+
 
     private FirebaseAuth mAuth;
 
@@ -89,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
         }
     }
+
 
     private void trySigningIn(){
         String email = EdtTxtUserName.getText().toString();

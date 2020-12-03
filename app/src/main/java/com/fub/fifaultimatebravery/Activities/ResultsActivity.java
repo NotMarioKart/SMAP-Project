@@ -2,6 +2,7 @@ package com.fub.fifaultimatebravery.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.fub.fifaultimatebravery.DataClasses.Matches;
 import com.fub.fifaultimatebravery.R;
+import com.fub.fifaultimatebravery.ViewModels.ResultsActivityViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,13 +26,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ResultsActivity extends AppCompatActivity {
     // Variables
-    private ResultsActivity viewModel;
     EditText EdtTxtMyGoals, EdtTxtOpponentGoals;
     TextView txtMyClub, txtOpponentClub, txtMyLeague, txtOpponentLeague, txtWager;
     Button bntSubmit, bntCancel;
     CheckBox CBMyRQ, CBOpponentRQ;
 
     private FirebaseFirestore db;
+    private ResultsActivityViewModel viewModel;
 
 
     @Override
@@ -38,8 +40,9 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        viewModel = new ViewModelProvider(this).get(ResultsActivityViewModel.class);
+
         db = FirebaseFirestore.getInstance();
-        CollectionReference dbUser = db.collection("User");
         // Resources
         EdtTxtMyGoals = findViewById(R.id.myGoalsET);
         EdtTxtOpponentGoals = findViewById(R.id.opponentGoalsET);
@@ -76,6 +79,10 @@ public class ResultsActivity extends AppCompatActivity {
         });
 
 
+        viewModel.getMyTeam();
+        viewModel.getOpponentTeam();
+
+
 
 
         bntCancel.setOnClickListener(new View.OnClickListener() {
@@ -104,30 +111,8 @@ public class ResultsActivity extends AppCompatActivity {
         } else{
             resultIsWin = false;
         }
-        CollectionReference dbMatches = db.collection("Matches");
-        Matches matches = new Matches(
-                userID,
-                myGoalsResult,
-                opponentGoalsResult,
-                resultIsWin
-        );
-
-        dbMatches.add(matches)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Intent Save = new Intent(ResultsActivity.this, StatisticsActivity.class);
-                        Toast.makeText(ResultsActivity.this, R.string.MatchSavedSuccess, Toast.LENGTH_SHORT).show();
-                        startActivity(Save);
-                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ResultsActivity.this, R.string.MatchSavedFail, Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        viewModel.saveMatch(userID, myGoalsResult, opponentGoalsResult, resultIsWin);
+        finish();
     }
 
     private void CancelClicked() {

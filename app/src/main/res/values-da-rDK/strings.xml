@@ -28,6 +28,7 @@
     <string name="WagerFailedToast">Kunne ikke tilføje væddemål, prøv igen</string>
     <string name="MatchSavedSuccess">Kampen blev gemt</string>
     <string name="MatchSavedFail">Kunne ikke gemme kamp, prøv igen</string>
+    <string name="wagerViewBnt">Se væddemål</string>
 
     <!--Væddemål-->
     <string name="money">Taberen giver 50 kroner til vinderen</string>

@@ -62,6 +62,7 @@
     <string name="wagerAddHint">Add wager here</string>
 
     <string name="wagerDummy" translatable="false">Wager</string>
+    <string name="wagerViewBnt">View wagers</string>
 
 
 </resources>
