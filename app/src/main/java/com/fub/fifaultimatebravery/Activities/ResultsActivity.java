@@ -104,7 +104,13 @@ public class ResultsActivity extends AppCompatActivity {
     private void SubmitClicked() {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String myGoalsResult = EdtTxtMyGoals.getText().toString();
+        if(myGoalsResult.equals("")){
+            myGoalsResult = "0";
+        }
         String opponentGoalsResult = EdtTxtOpponentGoals.getText().toString();
+        if(opponentGoalsResult.equals("")){
+            opponentGoalsResult = "0";
+        }
         Boolean resultIsWin;
         if (myGoalsResult.compareTo(opponentGoalsResult) > 0){
             resultIsWin = true;

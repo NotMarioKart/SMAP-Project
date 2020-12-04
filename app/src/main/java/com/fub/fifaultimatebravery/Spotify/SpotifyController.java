@@ -43,7 +43,7 @@ public class SpotifyController {
                 connect(context);
             }
             else {
-                //playMusic();
+                playMusic();
             }
         }
     }
@@ -59,7 +59,7 @@ public class SpotifyController {
             public void onConnected(SpotifyAppRemote spotifyAppRemote) {
                 mSpotifyAppRemote = spotifyAppRemote;
                 Log.d("SpotifyController", "Connected to Spotify");
-                //playMusic();
+                playMusic();
             }
 
             @Override
