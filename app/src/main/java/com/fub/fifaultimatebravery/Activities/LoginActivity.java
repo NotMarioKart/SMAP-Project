@@ -6,10 +6,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,9 +19,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -74,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                 ExitClicked();
             }
         });
+        EdtTxtUserName.setText("fred@test.com");
+        EdtTxtPassword.setText("123456");
     }
 
     @Override

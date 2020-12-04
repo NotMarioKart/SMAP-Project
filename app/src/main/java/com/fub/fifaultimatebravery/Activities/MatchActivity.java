@@ -12,14 +12,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.fub.fifaultimatebravery.Constants.Constants;
 import com.fub.fifaultimatebravery.DataClasses.Team;
+import com.fub.fifaultimatebravery.DataClasses.Wagers;
 import com.fub.fifaultimatebravery.Dialogs.MatchSettingsDialog;
 import com.fub.fifaultimatebravery.R;
 import com.fub.fifaultimatebravery.ViewModels.MatchActivityViewModel;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -29,6 +34,9 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
     TextView txtMyClub, txtOpponentClub, txtMyLeague, txtMyCountry, txtOpponentCountry, txtOpponentLeague, txtWager, txtLeagues, txtOpponentLeagues, txtMyTeamStadium, txtOpponentStadium;
     Button bntMatchResults, bntMyRegenerate, bntOpponentRegenerate, bntMySettings, bntOpponentSettings;
     ImageView ImgMyLogo, ImgOpponentLogo, ImgMyTeamFacebook, ImgMyTeamInstagram, ImgOpponentFacebook, ImgOpponentInstagram;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference loadAnimationFbRef = storage.getReferenceFromUrl("gs://fifaultimatebravery-a0344.appspot.com/FubLoadingAnimation.gif");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +54,7 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
         txtWager = findViewById(R.id.wagerTV3);
         txtLeagues = findViewById(R.id.LeaguesTv);
         txtOpponentLeagues = findViewById(R.id.OpponentLeaguesTv);
-        txtOpponentCountry = findViewById(R.id.opponentCountryTV4);
+        txtOpponentCountry = findViewById(R.id.activtiy_result_opponentLeague_txt);
         bntMatchResults = findViewById(R.id.enterResultsBtn);
         bntMyRegenerate = findViewById(R.id.myRegenerateBtn);
         bntOpponentRegenerate = findViewById(R.id.opponentRegenerateBtn);
@@ -97,13 +105,10 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
             }
         });
 
-        viewModel.getMyTeam().observe(this, team -> {
-            updateMyTeam(team);
-        });
+        viewModel.getMyTeam().observe(this, team -> updateMyTeam(team));
+        viewModel.getOpponenetsTeam().observe(this, team -> updateOpponenentsTeam(team));
+        viewModel.getWager().observe(this,wager -> updateWager(wager));
 
-        viewModel.getOpponenetsTeam().observe(this, team -> {
-            updateOpponenentsTeam(team);
-        });
 
         ImgMyTeamFacebook.setOnClickListener(view -> openFacebook(viewModel.getMyTeam().getValue()));
         ImgMyTeamInstagram.setOnClickListener(view -> openInstagram(viewModel.getMyTeam().getValue()));
@@ -112,13 +117,18 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
 
         Glide.with(this)
                 .asGif()
-                .load("https://i.pinimg.com/originals/18/79/17/187917b0606c80a6c295da1f19ff3e40.gif")
-                .into(ImgMyLogo);
+                .load(loadAnimationFbRef)
+                .into(ImgOpponentLogo);
 
         Glide.with(this)
                 .asGif()
-                .load("https://i.pinimg.com/originals/18/79/17/187917b0606c80a6c295da1f19ff3e40.gif")
-                .into(ImgOpponentLogo);
+                .load(loadAnimationFbRef)
+                .into(ImgMyLogo);
+
+    }
+
+    private void updateWager(Wagers wager) {
+        txtWager.setText(wager.getCustomWager());
     }
 
     private void openFacebook(Team team) {
@@ -182,6 +192,14 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
     }
 
     private void updateOpponenentsTeam(Team team) {
+        if(team.Name.equals("-")){
+            Glide.with(this)
+                    .asGif()
+                    .load(loadAnimationFbRef)
+                    .into(ImgMyLogo);
+            return;
+        }
+
         txtOpponentClub.setText(team.Name);
         String[] leagueSplitted = team.League.split(" ");
         txtOpponentCountry.setText(leagueSplitted[0]);
@@ -205,6 +223,14 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
     }
 
     private void updateMyTeam(Team team) {
+        if(team.Name.equals("-")){
+            Glide.with(this)
+                    .asGif()
+                    .load(loadAnimationFbRef)
+                    .into(ImgMyLogo);
+            return;
+        }
+
         txtMyClub.setText(team.Name);
         String[] leagueSplitted = team.League.split(" ");
         txtMyCountry.setText(leagueSplitted[0]);
@@ -250,10 +276,9 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
     }
 
     private void OpponentRegenerateClicked() {
-
         Glide.with(this)
                 .asGif()
-                .load("https://i.pinimg.com/originals/18/79/17/187917b0606c80a6c295da1f19ff3e40.gif")
+                .load(loadAnimationFbRef) //"https://i.pinimg.com/originals/18/79/17/187917b0606c80a6c295da1f19ff3e40.gif")
                 .into(ImgOpponentLogo);
         viewModel.generateNewTeam(false);
     }
@@ -261,20 +286,34 @@ public class MatchActivity extends AppCompatActivity implements MatchSettingsDia
     private void MyRegenerateClicked() {
         Glide.with(this)
                 .asGif()
-                .load("https://i.pinimg.com/originals/18/79/17/187917b0606c80a6c295da1f19ff3e40.gif")
+                .load(loadAnimationFbRef)
                 .into(ImgMyLogo);
         viewModel.generateNewTeam(true);
     }
 
     private void MatchResultsClicked() {
         Intent i = new Intent(this, ResultsActivity.class);
-        startActivity(i);
-        finish();
+        startActivityForResult(i, Constants.OpeningMatchResultActivity);
+        //finish();
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.OpeningMatchResultActivity)
+        {
+            if(resultCode == RESULT_OK) {
+                finish();
+            }
+            else if(resultCode == RESULT_CANCELED){
+                //do nothing
+            }
+        }
     }
 
     private void CancelClicked() {
-        Intent i = new Intent(this, MenuActivity.class);
-        startActivity(i);
+        //Intent i = new Intent(this, MenuActivity.class);
+        //startActivity(i);
         finish();
     }
 

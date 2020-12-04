@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.fub.fifaultimatebravery.DataClasses.Team;
+import com.fub.fifaultimatebravery.DataClasses.Wagers;
 import com.fub.fifaultimatebravery.Repositories.Repository;
 
 import java.util.ArrayList;
@@ -17,12 +18,14 @@ public class MatchActivityViewModel extends AndroidViewModel {
 
     LiveData<Team> myTeam;
     LiveData<Team> opponenetsTeam;
+    LiveData<Wagers> wager;
     public LiveData<Team> getMyTeam() {
         return myTeam;
     }
     public LiveData<Team> getOpponenetsTeam() {
         return opponenetsTeam;
     }
+    public  LiveData<Wagers> getWager(){return wager;}
 
     ArrayList<String> opponentLeagues = new ArrayList<>();
     ArrayList<String> myLeagues = new ArrayList<>();
@@ -42,8 +45,9 @@ public class MatchActivityViewModel extends AndroidViewModel {
         repository  = Repository.getRepository(application.getApplicationContext());
         myTeam = repository.getMyTeam();
         opponenetsTeam = repository.getOpponentsTeam();
-
+        wager = repository.getWager();
         generateTwoNewTeam(); //Called here so teams are not regenerated when app is rotated
+        repository.generateRandomWager();
     }
 
     public void generateNewTeam(boolean setMyTeam) {

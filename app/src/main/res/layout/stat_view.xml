@@ -19,8 +19,8 @@
 
             <ImageView
                 android:id="@+id/myTeamIMG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:contentDescription="@string/myClubDummy"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +41,8 @@
 
             <ImageView
                 android:id="@+id/opponentTeamIMG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:contentDescription="@string/opponentClubDummy"

@@ -10,7 +10,6 @@ import com.fub.fifaultimatebravery.DataClasses.Team;
 import com.fub.fifaultimatebravery.DataClasses.Wagers;
 import com.fub.fifaultimatebravery.FirebaseClients.FirestoreClient;
 import com.fub.fifaultimatebravery.Volley.SportsDBClient;
-import com.google.android.material.internal.ManufacturerUtils;
 
 import java.util.ArrayList;
 
@@ -90,7 +89,7 @@ public class Repository implements SportsDBClient.ISportsDbClientCallback {
         firestoreClient.getOpponentsTeam().observeForever(team -> updateTeamWithTeamInfo(team,false));
         games = firestoreClient.getGames();
         wins = firestoreClient.getWins();
-
+        wager = firestoreClient.getWager();
 
         //Volley setup
         sportsDBClient = new SportsDBClient(context,this);
@@ -116,11 +115,15 @@ public class Repository implements SportsDBClient.ISportsDbClientCallback {
 
     }
 
+    public void generateRandomWager(){
+        firestoreClient.generateRandomWager();
+    }
+
     public ArrayList<String> getAllLeagues(){
         return firestoreClient.getLeagues();
     }
     public void saveMatch(String userID, String myGoalsResult, String opponentGoalsResult, boolean resultItWin){
-        firestoreClient.saveMatch(userID, myGoalsResult, opponentGoalsResult, resultItWin);
+        firestoreClient.saveMatch(userID, myGoalsResult,myTeam.getValue().LogoUrl, opponentGoalsResult, opponentsTeam.getValue().LogoUrl, resultItWin);
     }
 
     public void addWager(String customWager, String userID){
@@ -133,5 +136,13 @@ public class Repository implements SportsDBClient.ISportsDbClientCallback {
 
     public void updateMatchesWon(){
         firestoreClient.getMatchesWon();
+    }
+
+    public void resetState() {
+        Team team = new Team();
+        team.Name = "-";
+        myTeam.postValue(team);
+        opponentsTeam.postValue(team);
+        wager.postValue(new Wagers("-",""));
     }
 }

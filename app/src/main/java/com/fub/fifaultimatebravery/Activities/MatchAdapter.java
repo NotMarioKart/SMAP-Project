@@ -1,5 +1,6 @@
 package com.fub.fifaultimatebravery.Activities;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.fub.fifaultimatebravery.DataClasses.Matches;
@@ -16,8 +18,11 @@ import com.fub.fifaultimatebravery.R;
 
 public class MatchAdapter extends FirestoreRecyclerAdapter<Matches, MatchAdapter.MatchHolder> {
 
-    public MatchAdapter(@NonNull FirestoreRecyclerOptions<Matches> options) {
+    Context context;
+
+    public MatchAdapter(@NonNull FirestoreRecyclerOptions<Matches> options, Context context) {
         super(options);
+        this.context = context;
     }
 
     @Override
@@ -25,6 +30,13 @@ public class MatchAdapter extends FirestoreRecyclerAdapter<Matches, MatchAdapter
         matchHolder.myGoals.setText(matches.getMyGoals());
         matchHolder.opponentGoals.setText(matches.getOpponentGoals());
 
+        Glide.with(context)
+                .load(matches.getOpponentLogoUrl())
+                .into(matchHolder.opponentTeamImg);
+
+        Glide.with(context)
+                .load(matches.getMyTeamLogoUrl())
+                .into(matchHolder.myTeamImg);
     }
 
     @NonNull

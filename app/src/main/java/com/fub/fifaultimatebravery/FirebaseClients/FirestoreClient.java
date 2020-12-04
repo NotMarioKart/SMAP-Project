@@ -2,21 +2,12 @@ package com.fub.fifaultimatebravery.FirebaseClients;
 
 import android.util.Log;
 
-import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.fub.fifaultimatebravery.Activities.MenuActivity;
-import com.fub.fifaultimatebravery.Activities.ResultsActivity;
-import com.fub.fifaultimatebravery.Activities.StatisticsActivity;
 import com.fub.fifaultimatebravery.DataClasses.Matches;
 import com.fub.fifaultimatebravery.DataClasses.Team;
 import com.fub.fifaultimatebravery.DataClasses.Wagers;
-import com.fub.fifaultimatebravery.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -40,7 +31,7 @@ public class FirestoreClient {
     static final String teamsCollectionName = "Teams";
     static final String leaguesCollectionName = "Leagues";
     static final String matchesCollectionName = "Matches";
-    static final String wagersCollectionsName = "Wages";
+    static final String wagersCollectionsName = "Wagers";
 
     //Livedata
     MutableLiveData<Team> myTeam;
@@ -69,7 +60,6 @@ public class FirestoreClient {
         return wager;
     }
 
-
     ArrayList<String> leagues;
 
     public FirestoreClient(){
@@ -78,6 +68,7 @@ public class FirestoreClient {
         wins = new MutableLiveData<>();
         games = new MutableLiveData<>();
         leagues = new ArrayList<>();
+        wager = new MutableLiveData<>();
         new Thread(() -> {
             getAllLeagues();
         }).start();
@@ -90,7 +81,7 @@ public class FirestoreClient {
     //https://stackoverflow.com/questions/46798981/firestore-how-to-get-random-documents-in-a-collection
     public void getRandomTeam(final boolean setMyTeam, ArrayList<String> leagues) {
         new Thread(() -> {
-            if(leagues == null){ //Sometimes leagues are unexplanably a null value;
+            if(leagues == null){ //Sometimes leagues are unexplainably a null value;
                 getRandomTeam(setMyTeam, new ArrayList<String>());
                 return;
             }
@@ -115,7 +106,7 @@ public class FirestoreClient {
                                         myTeam.postValue(randomTeam);
                                     }
                                     else {
-                                        opponentsTeam.setValue(randomTeam);
+                                        opponentsTeam.postValue(randomTeam);
                                     }
                                 }
                             }
@@ -141,7 +132,7 @@ public class FirestoreClient {
                                     if (setMyTeam) {
                                         myTeam.postValue(randomTeam);
                                     } else {
-                                        opponentsTeam.setValue(randomTeam);
+                                        opponentsTeam.postValue(randomTeam);
                                     }
                                 }
                             }
@@ -186,14 +177,45 @@ public class FirestoreClient {
         });
     }
 
-    public void saveMatch(String userID, String myGoalsResult, String opponentGoalsResult, boolean resultIsWin)
+    public void generateRandomWager() {
+        new Thread(() -> {
+            CollectionReference wagersCollection = db.collection(wagersCollectionsName);
+            String randomKey = wagersCollection.document().getId();
+            wagersCollection
+                    .whereGreaterThan(FieldPath.documentId(), randomKey)
+                    .whereEqualTo("userID", FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .limit(1)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                QuerySnapshot result = task.getResult();
+                                List<DocumentSnapshot> documents = result.getDocuments();
+                                if (documents.size() == 0) {
+                                    generateRandomWager(); //Run the function again, an error happened
+                                    return;
+                                }
+                                DocumentSnapshot documentSnapshot = documents.get(0);
+                                Wagers randomWager = documentSnapshot.toObject(Wagers.class);
+                                wager.postValue(randomWager);
+                            }
+                        }
+                    });
+        }).start();
+    }
+
+    public void saveMatch(String userID, String myGoalsResult, String myTeamLogoUrl, String opponentGoalsResult, String opponentLogoUrl, boolean resultIsWin)
     {
         CollectionReference matchesCollection = db.collection(matchesCollectionName);
         Matches matches = new Matches(
                 userID,
                 myGoalsResult,
+                myTeamLogoUrl,
                 opponentGoalsResult,
-                resultIsWin
+                opponentLogoUrl,
+                resultIsWin,
+                System.currentTimeMillis()
         );
 
         matchesCollection.add(matches)
