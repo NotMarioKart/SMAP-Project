@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="BackgroundC">	#ECE3E2</color>
+    <color name="Primary">#65BCBF</color>
+    <color name="Secondary">#F8777D</color>
+    <color name="Button">#0D1B46</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
