@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.fub.fifaultimatebravery">
+
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -17,24 +16,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FifaUltimateBravery">
+
+
         <service
+            android:name=".Spotify.ExitService"
             android:enabled="true"
-            android:name="com.fub.fifaultimatebravery.Spotify.ExitService"
             android:exported="false"
             android:stopWithTask="false" />
-        <activity android:name=".Activities.StatisticsActivity"></activity>
-        <activity android:name=".Activities.ResultsActivity" />
-        <activity android:name=".Activities.MatchActivity" />
-        <activity android:name=".Activities.MenuActivity" />
+
+        <activity android:name=".Activities.StatisticsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.ResultsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.MatchActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.MenuActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.WagerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activities.LoginActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <data
                     android:host="callback"
-                    android:scheme="spotifymusic"/>
+                    android:scheme="spotifymusic" />
             </intent-filter>
         </activity>
     </application>

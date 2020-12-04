@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="@color/BackgroundC">
+    android:background="@color/BackgroundC"
+    android:padding="16dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/wagerView"
@@ -19,12 +19,13 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/BackgroundC">
 
+
         <TextView
             android:id="@+id/wagerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            android:textSize="18sp"
-            android:background="@color/BackgroundC"/>
+            android:background="@color/BackgroundC"
+            android:textSize="36sp" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

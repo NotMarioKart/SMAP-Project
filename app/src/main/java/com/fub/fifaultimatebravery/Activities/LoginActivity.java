@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,6 +21,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -69,8 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                 ExitClicked();
             }
         });
-        EdtTxtUserName.setText("fred@test.com");
-        EdtTxtPassword.setText("123456");
     }
 
     @Override
@@ -94,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "Created User");
                                 Toast.makeText(LoginActivity.this, "Created User", Toast.LENGTH_SHORT).show();
+                                populateWagers();
                             } else {
                                 Log.d("TAG", "Could not create user");
                                 Toast.makeText(LoginActivity.this, "User could not be created", Toast.LENGTH_SHORT).show();
@@ -133,6 +138,21 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    private void populateWagers(){
+        String userID = mAuth.getCurrentUser().getUid();
+        if (Locale.getDefault().getLanguage().equals("en"))
+        {
+            for (int i = 0; i < 10; i++ ){
+                String customWager = getResources().getStringArray(R.array.WagersList)[i];
+                viewModel.addWager(customWager, userID);
+            }
+        } else if (Locale.getDefault().getLanguage().equals("da")) {
+            for (int i = 0; i < 10; i++) {
+                String customWager = getResources().getStringArray(R.array.WagersList)[i];
+                viewModel.addWager(customWager, userID);
+            }
+        }
+    }
 
     private void ExitClicked() {
         finish();

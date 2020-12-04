@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MenuActivity"
-    android:background="@color/BackgroundC">
+    tools:context=".Activities.MenuActivity">
 
     <TextView
         android:id="@+id/menuTV"
@@ -17,7 +16,7 @@
         android:layout_marginEnd="150dp"
         android:layout_marginRight="150dp"
         android:text="@string/menuTitle"
-        android:textSize="30sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +24,8 @@
 
     <Button
         android:id="@+id/generateBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="120dp"
@@ -39,8 +38,8 @@
 
     <Button
         android:id="@+id/statisticsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="30dp"
@@ -53,8 +52,8 @@
 
     <Button
         android:id="@+id/addBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/add"
@@ -63,39 +62,34 @@
 
     <Button
         android:id="@+id/LogOutBtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="50dp"
         android:text="@string/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EdtTxtAddWager" />
+        app:layout_constraintEnd_toEndOf="@+id/wagerViewBnt"
+        app:layout_constraintStart_toStartOf="@+id/wagerViewBnt"
+        app:layout_constraintTop_toBottomOf="@+id/wagerViewBnt" />
 
     <EditText
         android:id="@+id/EdtTxtAddWager"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="250dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
         android:hint="@string/wagerAddHint"
         android:inputType="none"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/statisticsBtn"
+        app:layout_constraintStart_toStartOf="@+id/statisticsBtn"
         app:layout_constraintTop_toBottomOf="@+id/statisticsBtn" />
 
     <Button
         android:id="@+id/wagerViewBnt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="50dp"
         android:text="@string/wagerViewBnt"
-        app:layout_constraintEnd_toEndOf="@+id/LogOutBtn2"
-        app:layout_constraintStart_toStartOf="@+id/LogOutBtn2"
+        app:layout_constraintEnd_toEndOf="@+id/EdtTxtAddWager"
+        app:layout_constraintStart_toStartOf="@+id/EdtTxtAddWager"
         app:layout_constraintTop_toBottomOf="@+id/addBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

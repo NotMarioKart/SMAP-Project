@@ -15,13 +15,12 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/BackgroundC">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/myTeamIMG"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:contentDescription="@string/myClubDummy"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,17 +32,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:text="@string/versus"
-                android:textSize="25sp"
+                android:textSize="50sp"
                 app:layout_constraintStart_toEndOf="@id/myTeamIMG"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/opponentTeamIMG"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:contentDescription="@string/opponentClubDummy"
@@ -57,9 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:layout_marginLeft="50dp"
                 android:text="@string/myGoalsStatDummy"
-                android:textSize="30sp"
+                android:textSize="50sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/opponentTeamIMG"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,9 +66,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:text="@string/opponentGoalsStatDummy"
-                android:textSize="30sp"
+                android:textSize="50sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/dashStatTV"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,9 +77,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
                 android:text="-"
-                android:textSize="30sp"
+                android:textSize="50sp"
                 app:layout_constraintStart_toEndOf="@+id/myGoalsStatTV"
                 app:layout_constraintTop_toTopOf="@+id/myGoalsStatTV" />
         </androidx.constraintlayout.widget.ConstraintLayout>

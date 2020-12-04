@@ -4,53 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ResultsActivity"
-    android:background="@color/BackgroundC">
+    tools:context=".Activities.ResultsActivity">
+
+    <TextView
+        android:id="@+id/resultsTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginRight="150dp"
+        android:text="@string/matchUp"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/youTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="150dp"
         android:text="@string/you"
-        android:textSize="25sp"
+        android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.521"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/resultsTitleTV"
+        app:layout_constraintTop_toBottomOf="@+id/resultsTitleTV" />
 
     <TextView
         android:id="@+id/opponentTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/opponent"
-        android:textSize="25sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/resultsTitleTV"
+        app:layout_constraintTop_toBottomOf="@+id/resultsTitleTV" />
 
     <ImageView
         android:id="@+id/myLogo4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:contentDescription="@string/myClubDummy"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/youTV4"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <ImageView
         android:id="@+id/opponentLogo4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:contentDescription="@string/opponentClubDummy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/opponentTV4"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
@@ -58,11 +75,10 @@
         android:id="@+id/myClubTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:lines="2"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="@string/myClubDummy"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myLogo4" />
 
@@ -70,21 +86,10 @@
         android:id="@+id/myLeagueTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="@string/myLeagueDummy"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_result_myTeamCountry_Txt" />
-
-    <TextView
-        android:id="@+id/activity_result_myTeamCountry_Txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/myLeagueDummy"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myClubTV4" />
 
@@ -92,110 +97,95 @@
         android:id="@+id/opponentClubTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:lines="2"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/opponentClubDummy"
-        android:textSize="18sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/opponentLogo4" />
 
     <TextView
-        android:id="@+id/activtiy_result_opponentLeague_txt"
+        android:id="@+id/opponentCountryTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/opponentLeagueDummy"
-        android:textSize="16sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/opponentClubTV4" />
-
-    <TextView
-        android:id="@+id/activity_result_opponentCountry_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/opponentLeagueDummy"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/opponentClubTV4" />
 
     <EditText
         android:id="@+id/myGoalsET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:width="55dp"
         android:autofillHints="@string/goalsHint"
         android:ems="10"
         android:hint="@string/goalsHint"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintHorizontal_bias="0.483"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myLeagueTV4" />
 
     <EditText
         android:id="@+id/opponentGoalsET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:width="55dp"
         android:autofillHints="@string/goalsHint"
         android:ems="10"
         android:hint="@string/goalsHint"
         android:inputType="number"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/activtiy_result_opponentLeague_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/opponentCountryTV4" />
 
     <TextView
         android:id="@+id/wagerTV4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginBottom="60dp"
         android:text="@string/wagerDummy"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cancelBtn4"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRQ" />
 
     <Button
         android:id="@+id/submitBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="50dp"
         android:text="@string/submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/cancelBtn4" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wagerTV4" />
 
     <Button
         android:id="@+id/cancelBtn4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="75dp"
         android:text="@string/cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/submitBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wagerTV4" />
 
     <CheckBox
         android:id="@+id/myRQ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:text="@string/rageQuit"
-        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myGoalsET" />
 
@@ -203,17 +193,11 @@
         android:id="@+id/opponentRQ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:text="@string/rageQuit"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/opponentGoalsET" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
