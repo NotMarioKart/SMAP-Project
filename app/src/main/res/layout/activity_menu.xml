@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MenuActivity"
-    android:background="@color/BackgroundC">
+    android:background="@color/BackgroundC"
+    tools:context=".Activities.MenuActivity">
 
     <TextView
         android:id="@+id/menuTV"
@@ -28,12 +28,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
         android:text="@string/generateMatch"
+        app:layout_constraintBottom_toTopOf="@+id/statisticsBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/menuTV" />
 
@@ -42,12 +42,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
         android:text="@string/viewStats"
+        app:layout_constraintBottom_toTopOf="@+id/EdtTxtAddWager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/generateBtn" />
 
@@ -55,9 +54,9 @@
         android:id="@+id/addBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="@string/add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/EdtTxtAddWager"
         app:layout_constraintTop_toTopOf="@+id/EdtTxtAddWager" />
 
@@ -66,26 +65,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="150dp"
-        android:layout_marginRight="150dp"
+        android:layout_marginBottom="60dp"
         android:text="@string/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EdtTxtAddWager" />
+        app:layout_constraintTop_toBottomOf="@+id/wagerViewBnt" />
 
     <EditText
         android:id="@+id/EdtTxtAddWager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="@string/wagerAddHint"
         android:inputType="none"
+        app:layout_constraintBottom_toTopOf="@+id/wagerViewBnt"
+        app:layout_constraintEnd_toStartOf="@+id/addBtn"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statisticsBtn" />
 
@@ -94,8 +92,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wagerViewBnt"
+        app:layout_constraintBottom_toTopOf="@+id/LogOutBtn2"
         app:layout_constraintEnd_toEndOf="@+id/LogOutBtn2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/LogOutBtn2"
-        app:layout_constraintTop_toBottomOf="@+id/addBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/EdtTxtAddWager" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
