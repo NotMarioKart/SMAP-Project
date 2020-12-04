@@ -112,7 +112,7 @@ public class ResultsActivity extends AppCompatActivity {
             opponentGoalsResult = "0";
         }
         Boolean resultIsWin;
-        if (myGoalsResult.compareTo(opponentGoalsResult) > 0){
+        if (Integer.parseInt(myGoalsResult) > Integer.parseInt(opponentGoalsResult) ){
             resultIsWin = true;
         } else{
             resultIsWin = false;
