@@ -42,30 +42,33 @@
     <string name="MatchSavedSuccess">Match saved</string>
     <string name="MatchSavedFail">Couldnt save match, try again</string>
 
-<string-array name="Leagues">
-    <item>PL</item>
-    <item>LaLiga</item>
-    <item>BundesLiga</item>
-    <item>Ligue 1</item>
-    <item>3F SuperLiga</item>
-</string-array>
+    <string-array name="Leagues">
+        <item>PL</item>
+        <item>LaLiga</item>
+        <item>BundesLiga</item>
+        <item>Ligue 1</item>
+        <item>3F SuperLiga</item>
+    </string-array>
     <!--Wagers-->
-    <string name="money">Loser gives 10 bucks to winner</string>
-    <string name="wedgie">Loser gets a wedgie - winner gives</string>
-    <string name="shot">Loser takes a shot of vodka</string>
-    <string name="bitchSlap">Loser gets a flat hand slap - winner swings</string>
-    <string name="sniff">Loser sniffs winners socks</string>
-    <string name="lick">Loser licks winners back</string>
-    <string name="pushUps">Loser does 20 push-ups</string>
-    <string name="condiment">Loser eats spoonful of condiment - winners choice</string>
-    <string name="beer">Loser chugs a bottle of beer</string>
-    <string name="profilePic">Loser gets new FB profile picture for 1 hour - winners choice</string>
-    <string name="wagerAddHint">Add wager here</string>
+    <string-array name="WagersList">
+        <item >Loser gives 10 bucks to winner</item>
+        <item >Loser gets a wedgie - winner gives</item>
+        <item >Loser takes a shot of vodka</item>
+        <item >Loser gets a flat hand slap - winner swings</item>
+        <item >Loser sniffs winners socks</item>
+        <item >Loser licks winners back</item>
+        <item >Loser does 20 push-ups</item>
+        <item >Loser eats spoonful of condiment - winners choice</item>
+        <item >Loser chugs a bottle of beer</item>
+        <item >Loser gets new FB profile picture for 1 hour - winners choice</item>
+    </string-array>
 
+    <string name="wagerAddHint">Add wager here</string>
     <string name="wagerDummy" translatable="false">Wager</string>
     <string name="wagerViewBnt">View wagers</string>
     <string name="FacebookErrorMessage">\"No Facebook found for \"</string>
     <string name="InstagramErrorMessage">\"No Instagram account found for \"</string>
+    <string name="WagerTitle">Swipe a wager to delete it</string>
 
 
 </resources>

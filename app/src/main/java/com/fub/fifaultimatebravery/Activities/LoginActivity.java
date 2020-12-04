@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -97,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.d("TAG", "Created User");
                                 Toast.makeText(LoginActivity.this, "Created User", Toast.LENGTH_SHORT).show();
+                                populateWagers();
                             } else {
                                 Log.d("TAG", "Could not create user");
                                 Toast.makeText(LoginActivity.this, "User could not be created", Toast.LENGTH_SHORT).show();
@@ -136,6 +138,21 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
+    private void populateWagers(){
+        String userID = mAuth.getCurrentUser().getUid();
+        if (Locale.getDefault().getLanguage().equals("en"))
+        {
+            for (int i = 0; i < 10; i++ ){
+                String customWager = getResources().getStringArray(R.array.WagersList)[i];
+                viewModel.addWager(customWager, userID);
+            }
+        } else if (Locale.getDefault().getLanguage().equals("da")) {
+            for (int i = 0; i < 10; i++) {
+                String customWager = getResources().getStringArray(R.array.WagersList)[i];
+                viewModel.addWager(customWager, userID);
+            }
+        }
+    }
 
     private void ExitClicked() {
         finish();

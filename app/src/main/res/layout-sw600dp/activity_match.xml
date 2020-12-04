@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.MatchActivity">
+
+    <TextView
+        android:id="@+id/youTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/you"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/opponentTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/opponent"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/myLogo4"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/myClubDummy"
+        android:maxWidth="250dp"
+        android:maxHeight="250dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/youTV4"
+        app:srcCompat="@drawable/loadspinner" />
+
+    <ImageView
+        android:id="@+id/opponentLogo4"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/opponentClubDummy"
+        android:maxWidth="250dp"
+        android:maxHeight="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentTV4"
+        app:srcCompat="@drawable/loadspinner" />
+
+    <TextView
+        android:id="@+id/myClubTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:minLines="2"
+        android:text="@string/myClubDummy"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myLogo4" />
+
+    <TextView
+        android:id="@+id/myLeagueTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:maxLines="1"
+        android:text="@string/myLeagueDummy"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myCountry" />
+
+    <TextView
+        android:id="@+id/activity_match_myTeamStadium_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:minLines="2"
+        android:text="@string/myLeagueDummy"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myLeagueTV4" />
+
+    <TextView
+        android:id="@+id/myCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:maxHeight="20dp"
+        android:maxLines="1"
+        android:text="-"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myClubTV4" />
+
+    <TextView
+        android:id="@+id/opponentClubTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minLines="2"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:text="@string/opponentClubDummy"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentLogo4" />
+
+    <TextView
+        android:id="@+id/opponentCountryTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:maxWidth="180dp"
+        android:text="-"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentClubTV4" />
+
+    <TextView
+        android:id="@+id/opponentLeagueTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:text="@string/opponentLeagueDummy"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentCountryTV4" />
+
+    <TextView
+        android:id="@+id/activity_match_opponentStadium_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minLines="2"
+        android:layout_marginTop="8dp"
+        android:maxWidth="180dp"
+        android:text="@string/opponentLeagueDummy"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentLeagueTV4" />
+
+    <Button
+        android:id="@+id/mySettingsBtn"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/settings"
+        app:layout_constraintEnd_toEndOf="@+id/myRegenerateBtn"
+        app:layout_constraintStart_toStartOf="@+id/myRegenerateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_myTeamFacebook_Img" />
+
+    <Button
+        android:id="@+id/opponentSettingsBtn"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/settings"
+        app:layout_constraintEnd_toEndOf="@+id/opponentRegenerateBtn"
+        app:layout_constraintHorizontal_bias="0.73"
+        app:layout_constraintStart_toStartOf="@+id/opponentRegenerateBtn"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_opponentInstagram_Img" />
+
+    <Button
+        android:id="@+id/myRegenerateBtn"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/reGenerate"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mySettingsBtn" />
+
+    <Button
+        android:id="@+id/opponentRegenerateBtn"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/reGenerate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/opponentSettingsBtn" />
+
+    <TextView
+        android:id="@+id/wagerTV3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+        android:text="@string/wagerDummy"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/enterResultsBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRegenerateBtn" />
+
+    <Button
+        android:id="@+id/enterResultsBtn"
+        android:layout_width="165dp"
+        android:layout_height="101dp"
+        android:layout_marginBottom="100dp"
+        android:text="@string/enterResults"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/wagerTV3"
+        app:layout_constraintStart_toStartOf="@+id/wagerTV3" />
+
+    <TextView
+        android:id="@+id/LeaguesTv"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/mySettingsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/mySettingsBtn" />
+
+    <TextView
+        android:id="@+id/OpponentLeaguesTv"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:textSize="8sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@id/opponentSettingsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/opponentSettingsBtn" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:rotationX="4"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/activity_match_myTeamInstagram_Img"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/activity_match_myTeamFacebook_Img"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_myTeamStadium_txt"
+        app:srcCompat="@drawable/instagram_logo" />
+
+    <ImageView
+        android:id="@+id/activity_match_opponentInstagram_Img"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/activity_match_opponentFacebook_Img"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_opponentStadium_txt"
+        app:srcCompat="@drawable/instagram_logo" />
+
+    <ImageView
+        android:id="@+id/activity_match_myTeamFacebook_Img"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_match_myTeamInstagram_Img"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_myTeamStadium_txt"
+        app:srcCompat="@drawable/facebook_logo" />
+
+    <ImageView
+        android:id="@+id/activity_match_opponentFacebook_Img"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activity_match_opponentInstagram_Img"
+        app:layout_constraintTop_toBottomOf="@+id/activity_match_opponentStadium_txt"
+        app:srcCompat="@drawable/facebook_logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

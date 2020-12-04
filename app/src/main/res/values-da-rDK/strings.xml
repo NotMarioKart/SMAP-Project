@@ -29,18 +29,23 @@
     <string name="MatchSavedSuccess">Kampen blev gemt</string>
     <string name="MatchSavedFail">Kunne ikke gemme kamp, prøv igen</string>
     <string name="wagerViewBnt">Se væddemål</string>
+    <string name="FacebookErrorMessage">\"Der blev ikke fundet nogen Facebook side for \"</string>
+    <string name="InstagramErrorMessage">\"Der blev ikke fundet nogen Instagram side for\"</string>
+    <string name="WagerTitle">Swipe et væddemål for at slette det</string>
 
-    <!--Væddemål-->
-    <string name="money">Taberen giver 50 kroner til vinderen</string>
-    <string name="wedgie">Taberen får en olfert - vinderen giver</string>
-    <string name="shot">Taberen drikker et vodkashot</string>
-    <string name="bitchSlap">Taberen får et slag med flad hånd - vinderen slår</string>
-    <string name="sniff">Taberen snuser til vinderens sokker</string>
-    <string name="lick">Taberen slikker vinderen på ryggen</string>
-    <string name="pushUps">Taberen tager 20 armbøjninger</string>
-    <string name="condiment">Taberen spiser en skeful dyppelse - vinderen bestemmer</string>
-    <string name="beer">Taberen bunder en flaske øl</string>
-    <string name="profilePic">Taberen får nyt profilbillede på FB i 1 time - vinderen bestemmer</string>
+    <string-array name="WagersList">
+    <item >Taberen giver 50 kroner til vinderen</item>
+    <item >Taberen får en olfert - vinderen giver</item>
+    <item >Taberen drikker et vodkashot</item>
+    <item >Taberen får et slag med flad hånd - vinderen slår</item>
+    <item >Taberen snuser til vinderens sokker</item>
+    <item >Taberen slikker vinderen på ryggen</item>
+    <item >Taberen tager 20 armbøjninger</item>
+    <item >Taberen spiser en skeful dyppelse - vinderen bestemmer</item>
+    <item >Taberen bunder en flaske øl</item>
+    <item >Taberen får nyt profilbillede på FB i 1 time - vinderen bestemmer</item>
+    </string-array>
+
     <string name="wagerAddHint">Tilføj væddemål her</string>
     <string name="save">Gem</string>
 </resources>

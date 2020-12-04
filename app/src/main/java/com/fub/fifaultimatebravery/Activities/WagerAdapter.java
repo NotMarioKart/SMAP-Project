@@ -13,6 +13,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.fub.fifaultimatebravery.DataClasses.Wagers;
 import com.fub.fifaultimatebravery.R;
 
+
+ // This adapter is inspired from https://www.youtube.com/watch?v=RFFu3dP5JDk&list=PLrnPJCHvNZuAXdWxOzsN5rgG2M4uJ8bH1&index=2
 public class WagerAdapter extends FirestoreRecyclerAdapter<Wagers, WagerAdapter.Wagerholder> {
 
 

@@ -40,7 +40,7 @@ public class FirestoreClient {
     static final String teamsCollectionName = "Teams";
     static final String leaguesCollectionName = "Leagues";
     static final String matchesCollectionName = "Matches";
-    static final String wagersCollectionsName = "Wages";
+    static final String wagersCollectionsName = "Wagers";
 
     //Livedata
     MutableLiveData<Team> myTeam;

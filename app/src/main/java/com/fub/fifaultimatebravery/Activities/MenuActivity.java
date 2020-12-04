@@ -32,6 +32,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 public class MenuActivity extends AppCompatActivity {
     // Variables
     private MenuActivityViewModel viewModel;
@@ -39,8 +42,6 @@ public class MenuActivity extends AppCompatActivity {
     Button bntGenerate, bntStatistics, bntAdd, bntLogOut, bntWagerList;
 
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
-    private WagerAdapter adapter;
 
 
 
@@ -51,11 +52,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
 
-
         viewModel = new ViewModelProvider(this).get(MenuActivityViewModel.class);
         // Resources
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
 
         EdtTxtWager = findViewById(R.id.EdtTxtAddWager);
         bntGenerate = findViewById(R.id.generateBtn);
@@ -63,7 +62,6 @@ public class MenuActivity extends AppCompatActivity {
         bntAdd = findViewById(R.id.addBtn);
         bntLogOut = findViewById(R.id.LogOutBtn2);
         bntWagerList = findViewById(R.id.wagerViewBnt);
-
 
 
 
@@ -104,41 +102,11 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void WagerListClicked() {
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        View mView = getLayoutInflater().inflate(R.layout.wager_list_viw, null);
-        mBuilder.setTitle("List of wagers");
-        setUpRecyclerView();
+       Intent i = new Intent(this, WagerActivity.class);
+       startActivity(i);
 
-        mBuilder.setView(mView);
-        AlertDialog dialog = mBuilder.create();
-        dialog.show();
 
     }
-
-    private void setUpRecyclerView() {
-        Query query = db.collection("Wagers").whereEqualTo("userID", FirebaseAuth.getInstance().getCurrentUser().getUid());
-        FirestoreRecyclerOptions<Wagers> options = new FirestoreRecyclerOptions.Builder<Wagers>()
-                .setQuery(query, Wagers.class)
-                .build();
-        adapter = new WagerAdapter(options);
-        RecyclerView recyclerView = findViewById(R.id.rcvWager);
-        recyclerView.hasFixedSize();
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT |ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                adapter.deleteWager(viewHolder.getAdapterPosition());
-            }
-        }).attachToRecyclerView(recyclerView);
-    }
-
 
     private void GenerateClicked() {
         Intent i = new Intent(this, MatchActivity.class);
@@ -155,6 +123,8 @@ public class MenuActivity extends AppCompatActivity {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String customWager = EdtTxtWager.getText().toString();
         viewModel.addWager(customWager, userID);
+        EdtTxtWager.setText("");
+
     }
 
     private void LogOutClicked() {
@@ -163,4 +133,5 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
 }
